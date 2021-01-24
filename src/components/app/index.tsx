@@ -23,21 +23,32 @@ const App = () => {
 
   const handleAddToCart = (item: CartItemType) => {
     setCartItems(prevState => {
-      const isItemInCart = prevState.find(element => element.id === item.id);
+      const isItemInCart = prevState.find(elem => elem.id === item.id);
 
       if (isItemInCart) {
-        return prevState.map(element => (
-          element.id === item.id
-            ? { ...element, amount: element.amount++ }
-            : element
-        ))
+        return prevState.map(elem =>
+          elem.id === item.id
+            ? { ...elem, amount: elem.amount + 1 }
+            : elem
+        );
       }
 
-      return [...prevState, { ...item, amount: 1 }]
-    })
+      return [...prevState, { ...item, amount: 1 }];
+    });
   };
 
-  const handleRemoveFromCart = () => null;
+  const handleRemoveFromCart = (id: number) => {
+    setCartItems(prevState =>
+      prevState.reduce((accum, item) => {
+        if (item.id === id) {
+          if (item.amount === 1) return accum;
+          return [...accum, { ...item, amount: item.amount - 1 }];
+        } else {
+          return [...accum, item];
+        }
+      }, [] as CartItemType[])
+    );
+  };
 
   if (isLoading) return <LinearProgress />
   if (error) return <div>Something went wrong...</div>
