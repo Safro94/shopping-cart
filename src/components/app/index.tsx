@@ -22,7 +22,19 @@ const App = () => {
     items.reduce((accum: number, item) => accum += item.amount, 0)
 
   const handleAddToCart = (item: CartItemType) => {
+    setCartItems(prevState => {
+      const isItemInCart = prevState.find(element => element.id === item.id);
 
+      if (isItemInCart) {
+        return prevState.map(element => (
+          element.id === item.id
+            ? { ...element, amount: element.amount++ }
+            : element
+        ))
+      }
+
+      return [...prevState, { ...item, amount: 1 }]
+    })
   };
 
   const handleRemoveFromCart = () => null;
