@@ -16,8 +16,6 @@ const Button = styled(IconButton)`
   right: 20px;
   top: 20px;
 `
-
-
 export {
   Wrapper,
   Items,
