@@ -9,13 +9,15 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import Item from '../item'
 
 import { getProducts, PRODUCTS_QUERY } from '../../utils/productsQuery';
-import { Wrapper, Items } from './index.styles';
+import { Wrapper, Items, Button } from './index.styles';
 import { CartItemType } from '../../types/CartItemType';
 
 const App = () => {
+  const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
+  const [cartItems, setCartItems] = useState<CartItemType[]>([]);
   const { data, isLoading, error } = useQuery<CartItemType[]>(PRODUCTS_QUERY, getProducts);
 
-  const getTotalItems = () => null;
+  const getTotalItems = (items: CartItemType[]) => null;
 
   const handleAddToCart = (item: CartItemType) => {
 
@@ -28,15 +30,21 @@ const App = () => {
 
   return (
     <Wrapper>
-      {
-        <Items>
-          {data?.map(item => (
-            <div key={item.id}>
-              <Item item={item} handleAddToCart={handleAddToCart} />
-            </div>
-          ))}
-        </Items>
-      }
+      <Drawer anchor='right' open={isCartOpen} onClose={() => setIsCartOpen(false)}>
+        Cart
+      </Drawer>
+      <Button onClick={() => setIsCartOpen(true)}>
+        <Badge badgeContent={getTotalItems(cartItems)} color='error'>
+          <AddShoppingCartIcon />
+        </Badge>
+      </Button>
+      <Items>
+        {data?.map(item => (
+          <div key={item.id}>
+            <Item item={item} handleAddToCart={handleAddToCart} />
+          </div>
+        ))}
+      </Items>
     </Wrapper>
   );
 }
