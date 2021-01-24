@@ -17,27 +17,40 @@ const Image = styled.img`
 `
 
 const Details = styled.div`
-  font-family: Arial, Helvetica, sans-serif;
+  display: grid;
+  grid-auto-rows: max-content;
   padding: 1rem;
   height: 100%;
 `
+
+const Price = styled.div`
+  padding: 1rem;
+`
+
 const Button = styled.button`
   border-radius: 0 0 20px 20px;
-  color: rgba(0, 0, 0, 0.87);
   padding: 6px 16px;
   font-size: 0.875rem;
   min-width: 64px;
   box-sizing: border-box;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-weight: 500;
   line-height: 1.75;
-  border-radius: 4px;
   letter-spacing: 0.02857em;
   text-transform: uppercase;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+
+  &:hover {
+    background: lightblue;
+    color: white;
+  }
 `
 export {
   Wrapper,
   Image,
   Details,
-  Button
+  Button,
+  Price
 }

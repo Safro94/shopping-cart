@@ -5,12 +5,13 @@ import Drawer from '@material-ui/core/Drawer';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Badge from '@material-ui/core/Badge';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 import Item from '../item'
 import Cart from '../cart'
 
 import { getProducts, PRODUCTS_QUERY } from '../../utils/productsQuery';
-import { Wrapper, Items, Button } from './index.styles';
+import { Wrapper, Items, Button, CloseIconWrapper } from './index.styles';
 import { CartItemType } from '../../types/CartItemType';
 
 const App = () => {
@@ -55,7 +56,14 @@ const App = () => {
 
   return (
     <Wrapper>
-      <Drawer anchor='right' open={isCartOpen} onClose={() => setIsCartOpen(false)}>
+      <Drawer
+        anchor='right'
+        open={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+      >
+        <CloseIconWrapper onClick={() => setIsCartOpen(false)}>
+          <CancelIcon />
+        </CloseIconWrapper>
         <Cart
           cartItems={cartItems}
           addToCart={handleAddToCart}

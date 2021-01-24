@@ -4,13 +4,18 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid lightblue;
-  padding-bottom: 20px;
+  padding: 20px 0;
 `;
 
 const Container = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-between;
+`;
+
+const ItemInformation = styled.div`
+  display: grid;
+  gap: 10px;
 `;
 
 const Image = styled.img`
@@ -22,5 +27,6 @@ const Image = styled.img`
 export {
   Wrapper,
   Container,
-  Image
+  Image,
+  ItemInformation
 }

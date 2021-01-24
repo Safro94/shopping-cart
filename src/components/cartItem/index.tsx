@@ -1,7 +1,7 @@
 import Button from '@material-ui/core/Button'
 import { FC } from 'react';
 
-import { Wrapper, Container, Image } from './index.styles';
+import { Wrapper, Container, Image, ItemInformation } from './index.styles';
 import { CartItemType } from '../../types/CartItemType';
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
 const Cart: FC<Props> = ({ item, addToCart, removeFromCart }) => {
   return (
     <Wrapper>
-      <div>
+      <ItemInformation>
         <h3>{item.title}</h3>
         <Container>
           <p>Price: ${item.price}</p>
@@ -38,7 +38,7 @@ const Cart: FC<Props> = ({ item, addToCart, removeFromCart }) => {
             +
           </Button>
         </Container>
-      </div>
+      </ItemInformation>
       <Image src={item.image} alt={item.title} />
     </Wrapper>
   )

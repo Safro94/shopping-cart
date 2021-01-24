@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { CartItemType } from '../../types/CartItemType';
-import { Wrapper, Details, Image, Button } from './index.styles';
+import { Wrapper, Details, Image, Button, Price } from './index.styles';
 
 type Props = {
   item: CartItemType;
@@ -14,8 +14,10 @@ const Item: FC<Props> = ({ item, handleAddToCart }) => (
     <Details>
       <h3>{item.title}</h3>
       <p>{item.description}</p>
-      <h3>{item.price}</h3>
     </Details>
+    <Price>
+      <h3>${(item.price).toFixed(2)}</h3>
+    </Price>
     <Button onClick={() => handleAddToCart(item)}>
       Add to cart
     </Button>
