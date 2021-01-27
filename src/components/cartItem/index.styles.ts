@@ -14,6 +14,14 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
+const PricesContainer = styled(Container)`
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
+
 const ItemInformation = styled.div`
   display: grid;
   gap: 10px;
@@ -36,5 +44,6 @@ export {
   Container,
   Image,
   ItemInformation,
-  Title
+  Title,
+  PricesContainer
 }
