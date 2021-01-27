@@ -1,16 +1,18 @@
 import Button from '@material-ui/core/Button'
 import { FC } from 'react';
 
+import { useProducts } from '../../hooks/products';
+
 import { Wrapper, Container, Image, ItemInformation } from './index.styles';
 import { CartItemType } from '../../types/CartItemType';
 
 type Props = {
   item: CartItemType;
-  addToCart: (item: CartItemType) => void;
-  removeFromCart: (id: number) => void;
 }
 
-const Cart: FC<Props> = ({ item, addToCart, removeFromCart }) => {
+const Cart: FC<Props> = ({ item }) => {
+  const { addToCart, removeFromCart } = useProducts();
+
   return (
     <Wrapper>
       <ItemInformation>
