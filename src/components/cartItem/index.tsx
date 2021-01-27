@@ -3,7 +3,7 @@ import { FC } from 'react';
 
 import { useProducts } from '../../hooks/products';
 
-import { Wrapper, Container, Image, ItemInformation } from './index.styles';
+import { Wrapper, Container, Image, ItemInformation, Title } from './index.styles';
 import { CartItemType } from '../../types/CartItemType';
 
 type Props = {
@@ -16,7 +16,7 @@ const Cart: FC<Props> = ({ item }) => {
   return (
     <Wrapper>
       <ItemInformation>
-        <h3>{item.title}</h3>
+        <Title>{item.title}</Title>
         <Container>
           <p>Price: ${item.price}</p>
           <p>Total: ${(item.amount * item.price).toFixed(2)}</p>

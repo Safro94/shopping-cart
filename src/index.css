@@ -8,3 +8,13 @@
 body {
 	max-width: 100%;
 }
+
+.MuiPaper-root {
+	width: 100%;
+}
+
+@media (min-width: 768px) {
+	.MuiPaper-root {
+		max-width: 70%;
+	}
+}
